@@ -1,0 +1,639 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hiệu ứng chữ hỗn loạn toàn màn hình</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      font-family: sans-serif;
+    }
+
+    .floating-text {
+      position: absolute;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #fff;
+      white-space: nowrap;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f;
+      animation: colorChange 5s infinite ease-in-out;
+    }
+
+    @keyframes colorChange {
+      0%   { color: #ff0; text-shadow: 0 0 10px #ff0; }
+      25%  { color: #0ff; text-shadow: 0 0 10px #0ff; }
+      50%  { color: #f0f; text-shadow: 0 0 10px #f0f; }
+      75%  { color: #0f0; text-shadow: 0 0 10px #0f0; }
+      100% { color: #ff0; text-shadow: 0 0 10px #ff0; }
+    }
+
+    @keyframes move0 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-10vw, -47vh); }
+      50% { transform: translate(-21vw, -13vh); }
+      75% { transform: translate(-2vw, 12vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move1 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-2vw, 45vh); }
+      50% { transform: translate(27vw, 33vh); }
+      75% { transform: translate(4vw, -19vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move2 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(48vw, 40vh); }
+      50% { transform: translate(-33vw, 37vh); }
+      75% { transform: translate(-10vw, -16vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move3 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-49vw, -27vh); }
+      50% { transform: translate(12vw, 40vh); }
+      75% { transform: translate(-21vw, -27vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move4 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-1vw, -25vh); }
+      50% { transform: translate(-29vw, -21vh); }
+      75% { transform: translate(-44vw, -2vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move5 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-2vw, 33vh); }
+      50% { transform: translate(21vw, -9vh); }
+      75% { transform: translate(2vw, 39vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move6 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(14vw, -40vh); }
+      50% { transform: translate(46vw, 26vh); }
+      75% { transform: translate(48vw, 38vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move7 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-26vw, 2vh); }
+      50% { transform: translate(-41vw, 2vh); }
+      75% { transform: translate(21vw, 30vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move8 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-47vw, 41vh); }
+      50% { transform: translate(-11vw, -15vh); }
+      75% { transform: translate(21vw, 13vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move9 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(29vw, 47vh); }
+      50% { transform: translate(14vw, 29vh); }
+      75% { transform: translate(-48vw, 15vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move10 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(22vw, -24vh); }
+      50% { transform: translate(34vw, -12vh); }
+      75% { transform: translate(22vw, -12vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move11 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(34vw, 9vh); }
+      50% { transform: translate(21vw, 5vh); }
+      75% { transform: translate(26vw, -47vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move12 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-45vw, 18vh); }
+      50% { transform: translate(-6vw, -18vh); }
+      75% { transform: translate(-47vw, -41vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move13 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(22vw, 0vh); }
+      50% { transform: translate(22vw, -13vh); }
+      75% { transform: translate(33vw, 23vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move14 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(49vw, 6vh); }
+      50% { transform: translate(-29vw, -34vh); }
+      75% { transform: translate(-7vw, 45vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move15 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(40vw, 26vh); }
+      50% { transform: translate(-50vw, -9vh); }
+      75% { transform: translate(3vw, -11vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move16 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(38vw, -50vh); }
+      50% { transform: translate(-22vw, 23vh); }
+      75% { transform: translate(-10vw, -15vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move17 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-48vw, -7vh); }
+      50% { transform: translate(15vw, 19vh); }
+      75% { transform: translate(5vw, 49vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move18 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-26vw, -21vh); }
+      50% { transform: translate(-40vw, -43vh); }
+      75% { transform: translate(33vw, 14vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move19 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(40vw, -6vh); }
+      50% { transform: translate(34vw, -9vh); }
+      75% { transform: translate(34vw, 35vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move20 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-21vw, 30vh); }
+      50% { transform: translate(-28vw, -3vh); }
+      75% { transform: translate(7vw, 40vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move21 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(34vw, 14vh); }
+      50% { transform: translate(32vw, -22vh); }
+      75% { transform: translate(-4vw, -25vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move22 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(30vw, 35vh); }
+      50% { transform: translate(11vw, 22vh); }
+      75% { transform: translate(-18vw, -29vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move23 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(7vw, -29vh); }
+      50% { transform: translate(12vw, 40vh); }
+      75% { transform: translate(-15vw, 46vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move24 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-36vw, 3vh); }
+      50% { transform: translate(-2vw, -46vh); }
+      75% { transform: translate(44vw, 5vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move25 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(44vw, 45vh); }
+      50% { transform: translate(9vw, 12vh); }
+      75% { transform: translate(32vw, -43vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move26 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(0vw, -12vh); }
+      50% { transform: translate(-38vw, -19vh); }
+      75% { transform: translate(-33vw, -12vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move27 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-28vw, 24vh); }
+      50% { transform: translate(14vw, 45vh); }
+      75% { transform: translate(36vw, 17vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move28 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(15vw, -8vh); }
+      50% { transform: translate(8vw, 0vh); }
+      75% { transform: translate(-44vw, -36vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move29 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(34vw, -13vh); }
+      50% { transform: translate(26vw, 14vh); }
+      75% { transform: translate(-9vw, -24vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move30 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(44vw, 8vh); }
+      50% { transform: translate(4vw, -13vh); }
+      75% { transform: translate(-35vw, -33vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move31 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-29vw, -31vh); }
+      50% { transform: translate(-18vw, 1vh); }
+      75% { transform: translate(46vw, 23vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move32 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-30vw, 47vh); }
+      50% { transform: translate(-6vw, 11vh); }
+      75% { transform: translate(46vw, -20vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move33 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(17vw, 28vh); }
+      50% { transform: translate(2vw, 6vh); }
+      75% { transform: translate(42vw, -43vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move34 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-35vw, -28vh); }
+      50% { transform: translate(50vw, 48vh); }
+      75% { transform: translate(8vw, -45vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move35 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(36vw, 4vh); }
+      50% { transform: translate(17vw, 18vh); }
+      75% { transform: translate(-17vw, 44vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move36 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-12vw, -13vh); }
+      50% { transform: translate(-3vw, 1vh); }
+      75% { transform: translate(-28vw, -23vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move37 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-27vw, -17vh); }
+      50% { transform: translate(-38vw, 18vh); }
+      75% { transform: translate(45vw, 41vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move38 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(34vw, -19vh); }
+      50% { transform: translate(-27vw, 26vh); }
+      75% { transform: translate(27vw, -32vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move39 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-20vw, 16vh); }
+      50% { transform: translate(7vw, -24vh); }
+      75% { transform: translate(-20vw, 18vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move40 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(7vw, 31vh); }
+      50% { transform: translate(-41vw, -8vh); }
+      75% { transform: translate(0vw, 14vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move41 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-3vw, -29vh); }
+      50% { transform: translate(-49vw, -30vh); }
+      75% { transform: translate(9vw, 42vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move42 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-1vw, 4vh); }
+      50% { transform: translate(3vw, 35vh); }
+      75% { transform: translate(33vw, -40vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move43 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(42vw, -4vh); }
+      50% { transform: translate(34vw, 42vh); }
+      75% { transform: translate(37vw, 44vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move44 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(46vw, -32vh); }
+      50% { transform: translate(-31vw, 28vh); }
+      75% { transform: translate(26vw, 5vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move45 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-21vw, -19vh); }
+      50% { transform: translate(-9vw, -23vh); }
+      75% { transform: translate(41vw, -44vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move46 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-12vw, 11vh); }
+      50% { transform: translate(-15vw, -9vh); }
+      75% { transform: translate(-42vw, -42vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move47 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(14vw, -7vh); }
+      50% { transform: translate(-5vw, -8vh); }
+      75% { transform: translate(-21vw, 41vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move48 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(31vw, 20vh); }
+      50% { transform: translate(45vw, -24vh); }
+      75% { transform: translate(22vw, 1vh); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes move49 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(-2vw, -43vh); }
+      50% { transform: translate(10vw, -7vh); }
+      75% { transform: translate(22vw, 44vh); }
+      100% { transform: translate(0, 0); }
+    }
+    </style>
+</head>
+<body>
+
+    <div class="floating-text" style="top:69vh; left:56vw; animation: move0 14s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:52vh; left:26vw; animation: move1 14s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:50vh; left:25vw; animation: move2 19s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:10vh; left:5vw; animation: move3 19s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:34vh; left:65vw; animation: move4 24s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:1vh; left:64vw; animation: move5 21s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:31vh; left:60vw; animation: move6 16s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:44vh; left:29vw; animation: move7 11s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:5vh; left:47vw; animation: move8 14s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:58vh; left:85vw; animation: move9 18s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:8vh; left:52vw; animation: move10 15s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:5vh; left:71vw; animation: move11 10s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:63vh; left:52vw; animation: move12 14s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:11vh; left:35vw; animation: move13 24s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:50vh; left:24vw; animation: move14 12s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:68vh; left:11vw; animation: move15 14s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:9vh; left:25vw; animation: move16 17s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:87vh; left:28vw; animation: move17 18s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:49vh; left:18vw; animation: move18 25s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:82vh; left:29vw; animation: move19 19s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:83vh; left:12vw; animation: move20 16s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:74vh; left:45vw; animation: move21 18s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:54vh; left:83vw; animation: move22 11s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:1vh; left:12vw; animation: move23 24s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:40vh; left:55vw; animation: move24 24s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:38vh; left:37vw; animation: move25 21s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:68vh; left:57vw; animation: move26 17s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:83vh; left:53vw; animation: move27 24s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:55vh; left:83vw; animation: move28 19s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:69vh; left:89vw; animation: move29 16s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:78vh; left:11vw; animation: move30 13s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:16vh; left:23vw; animation: move31 15s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:61vh; left:50vw; animation: move32 17s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:75vh; left:40vw; animation: move33 10s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:74vh; left:33vw; animation: move34 12s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:14vh; left:10vw; animation: move35 17s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:73vh; left:42vw; animation: move36 11s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:38vh; left:51vw; animation: move37 13s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:4vh; left:89vw; animation: move38 24s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:33vh; left:17vw; animation: move39 17s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:58vh; left:18vw; animation: move40 21s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:53vh; left:49vw; animation: move41 24s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:7vh; left:43vw; animation: move42 18s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:51vh; left:46vw; animation: move43 22s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:18vh; left:33vw; animation: move44 20s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:26vh; left:62vw; animation: move45 19s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:23vh; left:21vw; animation: move46 19s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:44vh; left:20vw; animation: move47 15s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:24vh; left:58vw; animation: move48 13s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+
+    <div class="floating-text" style="top:80vh; left:35vw; animation: move49 25s infinite alternate, colorChange 5s infinite;">
+      Không đến dự hay sao mà chuyển khoản chi vậy Người Đẹp
+    </div>
+</body>
+</html>
